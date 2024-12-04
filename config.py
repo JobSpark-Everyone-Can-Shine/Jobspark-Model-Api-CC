@@ -13,7 +13,7 @@ LOCAL_DATASET_PATH = DATASET_BLOB_NAME
 LOCAL_SISREK_MODEL_PATH = SISREK_MODEL_BLOB_NAME
 
 # Model configuration
-MODEL_PATH = "model_transfer_downsyndrome.keras"
+MODEL_PATH = LOCAL_MODEL_PATH
 LABELS = {0: "Syndrome", 1: "Healthy"}
 
 # Feature weights
