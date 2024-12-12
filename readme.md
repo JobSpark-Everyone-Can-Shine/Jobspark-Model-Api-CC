@@ -65,8 +65,8 @@ cd jobspark-model-api
 ```bash
 export ENV LOCAL_MODEL_PATH=model_transfer_downsyndrome.keras
 export ENV MODEL_BLOB_NAME=model_transfer_downsyndrome.keras
-export ENV BUCKET_NAME=jobspark
-export ENV PROJECT_ID=jobspark
+export ENV BUCKET_NAME=[change to your bucket name]
+export ENV PROJECT_ID=[change to your project id]
 export ENV SERVICE_ACCOUNT_PATH=service-account.json
 export ENV DATASET_PATH=dataset.csv
 export ENV SISREK_MODEL_PATH=model_sisrek_jobspark.h5
@@ -158,21 +158,13 @@ kill -9 <PID>
 
 ## Troubleshooting Tips
 
-1. Check logs for detailed error messages:
-
-```bash
-tail -f logs/app.log
-```
-
-2. Enable debug mode in `.env` for more detailed error responses
-
-3. Verify Python version compatibility:
+1. Verify Python version compatibility:
 
 ```bash
 python --version
 ```
 
-4. Clear cached Python files:
+2. Clear cached Python files:
 
 ```bash
 find . -type d -name "__pycache__" -exec rm -r {} +
