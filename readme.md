@@ -43,3 +43,166 @@ JobSpark is a platform designed to empower individuals with Down syndrome by con
    - Model Down Syndrome Face Recognition Jobspark
    - Model Recommendation System Jobspark
 
+# Getting Started
+
+## Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package manager)
+- Git (for cloning the repository)
+
+## Setup Instructions
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/JobSpark-Everyone-Can-Shine/Jobspark-Model-Api-CC.git jobspark-model-api
+cd jobspark-model-api
+```
+
+2. Create and activate a virtual environment:
+
+```bash
+export ENV LOCAL_MODEL_PATH=model_transfer_downsyndrome.keras
+export ENV MODEL_BLOB_NAME=model_transfer_downsyndrome.keras
+export ENV BUCKET_NAME=jobspark
+export ENV PROJECT_ID=jobspark
+export ENV SERVICE_ACCOUNT_PATH=service-account.json
+export ENV DATASET_PATH=dataset.csv
+export ENV SISREK_MODEL_PATH=model_sisrek_jobspark.h5
+```
+
+3. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Start the development server:
+
+```bash
+# Development with auto-reload
+uvicorn main:app --reload --port 8000
+
+# Production
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
+
+7. Access the API:
+
+- API endpoints: http://localhost:8000
+- Interactive API docs: http://localhost:8000/docs
+- Alternative API docs: http://localhost:8000/redoc
+
+## Project Structure
+
+```
+fastapi-project/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── dependencies.py
+│   ├── routers/
+│   ├── models/
+│   ├── schemas/
+│   └── services/
+├── tests/
+├── alembic/
+├── requirements.txt
+├── .env
+└── README.md
+```
+
+## Common Issues and Solutions
+
+1. Dependencies installation fails:
+
+```bash
+# Update pip
+pip install --upgrade pip
+
+# Install system-level dependencies (Ubuntu/Debian)
+sudo apt-get install python3-dev build-essential
+```
+
+2. Database connection issues:
+
+- Verify database credentials in `.env`
+- Ensure database service is running
+- Check database connectivity:
+
+```bash
+python -c "from app.database import engine; engine.connect()"
+```
+
+3. Port already in use:
+
+```bash
+# Find process using the port
+lsof -i :8000
+
+# Kill the process
+kill -9 <PID>
+```
+
+## Development Commands
+
+```bash
+# Run tests
+pytest
+
+# Run specific test file
+pytest tests/test_users.py -v
+
+# Generate migrations
+alembic revision --autogenerate -m "description"
+
+# Lint code
+flake8 .
+black .
+
+# Check dependencies for security issues
+safety check
+```
+
+## Environment Variables
+
+Key environment variables that need to be configured:
+
+| Variable     | Description                | Default                             |
+| ------------ | -------------------------- | ----------------------------------- |
+| DATABASE_URL | Database connection string | postgresql://user:pass@localhost/db |
+| API_KEY      | API authentication key     | None                                |
+| DEBUG        | Debug mode flag            | False                               |
+| LOG_LEVEL    | Logging level              | INFO                                |
+
+## Additional Resources
+
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Pydantic Documentation](https://pydantic-docs.helpmanual.io/)
+- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
+- [Alembic Documentation](https://alembic.sqlalchemy.org/)
+
+## Troubleshooting Tips
+
+1. Check logs for detailed error messages:
+
+```bash
+tail -f logs/app.log
+```
+
+2. Enable debug mode in `.env` for more detailed error responses
+
+3. Verify Python version compatibility:
+
+```bash
+python --version
+```
+
+4. Clear cached Python files:
+
+```bash
+find . -type d -name "__pycache__" -exec rm -r {} +
+```
+
+For project-specific questions or issues, please refer to the project's issue tracker or contact the development team.
