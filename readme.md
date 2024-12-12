@@ -97,20 +97,29 @@ uvicorn main:app --host 0.0.0.0 --port 8000
 ## Project Structure
 
 ```
-fastapi-project/
-├── app/
+project_root/
+├── models/
 │   ├── __init__.py
-│   ├── main.py
-│   ├── dependencies.py
-│   ├── routers/
-│   ├── models/
-│   ├── schemas/
-│   └── services/
-├── tests/
-├── alembic/
+│   └── schemas.py
+├── services/
+│   ├── __init__.py
+│   ├── gcs_service.py
+│   ├── image_service.py
+│   └── recommendation_service.py
+├── utils/
+│   ├── __init__.py
+│   └── data_processing.py
+├── .dockerignore
+├── .gitignore
+├── config.py
+├── dataset.csv
+├── Dockerfile
+├── main.py
+├── model_sirek_jobspark.h5
+├── model_transfer_downsyndromekers
+├── readme.md
 ├── requirements.txt
-├── .env
-└── README.md
+└── service-account.json
 ```
 
 ## Common Issues and Solutions
@@ -125,15 +134,10 @@ pip install --upgrade pip
 sudo apt-get install python3-dev build-essential
 ```
 
-2. Database connection issues:
+2. connection issues:
 
-- Verify database credentials in `.env`
-- Ensure database service is running
-- Check database connectivity:
-
-```bash
-python -c "from app.database import engine; engine.connect()"
-```
+- Verify environment credentials
+- Ensure you have connection internet
 
 3. Port already in use:
 
@@ -144,37 +148,6 @@ lsof -i :8000
 # Kill the process
 kill -9 <PID>
 ```
-
-## Development Commands
-
-```bash
-# Run tests
-pytest
-
-# Run specific test file
-pytest tests/test_users.py -v
-
-# Generate migrations
-alembic revision --autogenerate -m "description"
-
-# Lint code
-flake8 .
-black .
-
-# Check dependencies for security issues
-safety check
-```
-
-## Environment Variables
-
-Key environment variables that need to be configured:
-
-| Variable     | Description                | Default                             |
-| ------------ | -------------------------- | ----------------------------------- |
-| DATABASE_URL | Database connection string | postgresql://user:pass@localhost/db |
-| API_KEY      | API authentication key     | None                                |
-| DEBUG        | Debug mode flag            | False                               |
-| LOG_LEVEL    | Logging level              | INFO                                |
 
 ## Additional Resources
 
