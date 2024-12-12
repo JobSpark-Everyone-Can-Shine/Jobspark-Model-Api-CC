@@ -1,7 +1,5 @@
 <h1 align="center">✨ JobSpark ✨<br> Everyone can shine</h1>
 
----
-
 <div align='center'>
 
 ![Cloud Computing](https://img.shields.io/badge/Cloud_Computing-%237F52FF?style=for-the-badge&logo=googlecloudstorage&logoColor=white) ![Visual Studio Code](https://img.shields.io/badge/Visual_Studio_Code-2196F3.svg?style=for-the-badge&logo=accenture&logoColor=white) ![Python](https://img.shields.io/badge/python-E58800.svg?style=for-the-badge&logo=python&logoColor=white)
